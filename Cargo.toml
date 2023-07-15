@@ -1,6 +1,6 @@
 [package]
 name = "geox"
-version = "0.5.2"
+version = "0.5.3"
 edition = "2021"
 description = "Shim to simplify using PostGIS types with sqlx and async-graphql"
 authors = ["Brendan Molloy <brendan@bbqsrc.net>"]
@@ -9,7 +9,7 @@ repository = "https://github.com/bbqsrc/geox"
 
 [dependencies]
 async-graphql = { version = "4.0.13", optional = true }
-geo = "0.23.1"
+geo = "0.26"
 geo-types = "0.7.8"
 geozero = { version = "0.9.5", features = [
     "with-postgis-sqlx",
