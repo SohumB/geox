@@ -170,7 +170,7 @@ mod sqlx_tests {
         use sqlx::postgres::PgPoolOptions;
         let conn = PgPoolOptions::new()
             .max_connections(5)
-            .connect("postgres://postgres:password@localhost/postgres")
+            .connect(&std::env::var("DATABASE_URL").unwrap())
             .await
             .unwrap();
         let mut conn = conn.begin().await.unwrap();
