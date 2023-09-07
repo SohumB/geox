@@ -1,6 +1,6 @@
 [package]
 name = "geox"
-version = "0.5.3"
+version = "0.6.0"
 edition = "2021"
 description = "Shim to simplify using PostGIS types with sqlx and async-graphql"
 authors = ["Brendan Molloy <brendan@bbqsrc.net>"]
@@ -11,18 +11,18 @@ repository = "https://github.com/bbqsrc/geox"
 async-graphql = { version = "4.0.13", optional = true }
 geo = "0.26"
 geo-types = "0.7.8"
-geozero = { version = "0.9.5", features = [
+geozero = { version = "0.11.0", features = [
     "with-postgis-sqlx",
 ], optional = true }
 serde = { version = "1.0.144", features = ["derive"], optional = true }
 serde_json = { version = "1.0.85", optional = true }
-sqlx = { version = "0.6.2", optional = true }
+sqlx = { version = "0.7", optional = true }
 
 [dev-dependencies]
 tokio = { version = "1.21.1", features = ["full"] }
 
 [dev-dependencies.sqlx]
-version = "0.6.2"
+version = "0.7"
 features = ["runtime-tokio-rustls", "postgres"]
 
 [features]
