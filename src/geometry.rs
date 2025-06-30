@@ -1,6 +1,9 @@
 use std::ops::Deref;
 
 #[cfg(feature = "sqlx")]
+use std::error::Error;
+
+#[cfg(feature = "sqlx")]
 use geozero::{wkb, ToWkb};
 
 #[cfg(feature = "sqlx")]
@@ -64,13 +67,13 @@ impl<'de> sqlx::Decode<'de, Postgres> for Geometry {
 
 #[cfg(feature = "sqlx")]
 impl<'en> sqlx::Encode<'en, Postgres> for Geometry {
-    fn encode_by_ref(&self, buf: &mut sqlx::postgres::PgArgumentBuffer) -> IsNull {
+    fn encode_by_ref(&self, buf: &mut sqlx::postgres::PgArgumentBuffer) -> Result<IsNull, Box<dyn Error + Send + Sync>> {
         let x = self
             .0
             .to_ewkb(geozero::CoordDimensions::xy(), None)
             .unwrap();
         buf.extend(x);
-        sqlx::encode::IsNull::No
+        Ok(sqlx::encode::IsNull::No)
     }
 }
 
